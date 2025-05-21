@@ -1,0 +1,19 @@
+### Create a new cashcard
+POST http://localhost:8080/api/cashcards
+Content-Type: application/json
+
+{
+  "amount": null,
+  "owner": ""
+}
+
+> {% client.global.set("resources", response.headers.valueOf("Location")) %}
+
+### Get details cashcard
+GET {{resources}}
+
+### Take all cashcard
+GET http://localhost:8080/api/cashcards
+
+### Take all cashcard with pagination
+GET http://localhost:8080/api/cashcards?size=1

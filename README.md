@@ -2,9 +2,9 @@
 
 ## Endpoints
 
-| No | Endpoints                      | Information            |
-|----|--------------------------------|------------------------|
-| 1  | GET ``/api/cashcards/{id}``    | Take a detail cashcard |
-| 2  | POST ``/api/cashcards``        | Create a new cashcard  |
-| 3  | GET ``/apii/cashcards``        | Take all cashcard      |
+| No | Endpoints                     | Information            |
+|----|-------------------------------|------------------------|
+| 1  | GET ``/api/cashcards/{id}``   | Take a detail cashcard |
+| 2  | POST ``/api/cashcards``       | Create a new cashcard  |
+| 3  | GET ``/api/cashcards``        | Take all cashcard      |
 | 4  | DELETE ``/api/cashcards/{id}`` | Remove cashcard        |
