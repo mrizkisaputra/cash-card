@@ -9,6 +9,7 @@ import com.cashcard.repositories.CashCardRepository;
 import com.cashcard.services.CashCardService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/cashcards")
 @RequiredArgsConstructor
@@ -39,10 +41,11 @@ public class CashCardController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     private ResponseEntity<Void> handleCreateCashCard(
+            @CurrentOwner String owner,
             @Valid @RequestBody CreateCashCardDto newCashCard,
             UriComponentsBuilder ucb
     ) {
-        CashCard cashCard = this.cashCardService.createCashCard(newCashCard);
+        CashCard cashCard = this.cashCardService.createCashCard(owner, newCashCard);
         URI location = ucb.path("/api/cashcards/{id}")
                 .buildAndExpand(cashCard.getId())
                 .toUri();

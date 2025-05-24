@@ -4,8 +4,6 @@ import com.cashcard.dto.CashCardResponse;
 import com.cashcard.dto.CreateCashCardDto;
 import com.cashcard.entities.CashCard;
 import com.cashcard.repositories.CashCardRepository;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,10 +25,10 @@ public class CashCardService {
                 .build();
     }
 
-    public CashCard createCashCard(CreateCashCardDto newCashCard) {
+    public CashCard createCashCard(String owner, CreateCashCardDto newCashCard) {
         CashCard cashCardEntity = new CashCard();
         cashCardEntity.setAmount(newCashCard.getAmount());
-        cashCardEntity.setOwner(newCashCard.getOwner());
+        cashCardEntity.setOwner(owner);
 
         return this.cashCardRepository.save(cashCardEntity);
     }

@@ -8,9 +8,6 @@ import java.math.BigDecimal;
 
 @Data
 public class CreateCashCardDto {
-    @NotNull @NotBlank
-    private String owner;
-
     @NotNull
     private BigDecimal amount;
 }
